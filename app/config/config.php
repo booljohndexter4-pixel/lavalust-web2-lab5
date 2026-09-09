@@ -352,5 +352,4 @@ $config['middlewares'] = array(
     'student' => load_class('StudentMiddleware', 'middlewares'),
 );
 
-?>
 
