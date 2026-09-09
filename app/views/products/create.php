@@ -2,24 +2,29 @@
 <html>
 <head>
     <title>Add Product</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Add Product</h1>
-    <form action="<?= site_url('products/create') ?>" method="post">
-        <label>Product Name:</label><br>
-        <input type="text" name="product_name" required><br><br>
+    <div class="container">
+        <h1>Add Product</h1>
+        <div class="card">
+            <form action="<?= site_url('products/create') ?>" method="post">
+                <label>Product Name</label>
+                <input type="text" name="product_name" required>
 
-        <label>Description:</label><br>
-        <textarea name="description"></textarea><br><br>
+                <label>Description</label>
+                <textarea name="description" rows="3"></textarea>
 
-        <label>Price:</label><br>
-        <input type="number" step="0.01" name="price" required><br><br>
+                <label>Price</label>
+                <input type="number" step="0.01" name="price" required>
 
-        <label>Quantity:</label><br>
-        <input type="number" name="quantity" required><br><br>
+                <label>Quantity</label>
+                <input type="number" name="quantity" required>
 
-        <button type="submit">Save</button>
-    </form>
-    <p><a href="<?= site_url('products') ?>">Back to list</a></p>
+                <button type="submit" class="btn">Save</button>
+            </form>
+            <p class="footer-link"><a href="<?= site_url('products') ?>">← Back to list</a></p>
+        </div>
+    </div>
 </body>
 </html>
