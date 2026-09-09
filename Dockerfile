@@ -21,11 +21,10 @@ COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
-# Make Apache listen on the port Render provides at runtime
-RUN sed -i 's/Listen 80/Listen ${PORT}/' /etc/apache2/ports.conf
-RUN sed -i 's/:80/:${PORT}/' /etc/apache2/sites-available/000-default.conf
+# Startup script that binds Apache to Render's runtime $PORT
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 80
 
-# Start Apache with the correct port substituted at container startup
-CMD sh -c "sed -i \"s/\\${PORT}/\$PORT/g\" /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf && apache2-foreground"
+CMD ["/start.sh"]
